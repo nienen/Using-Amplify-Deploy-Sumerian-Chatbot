@@ -18,12 +18,12 @@ In this lab, you will learn how to set up an AWS Amplify React app to hold a Sum
 
 ## Preparation
 
-- AWS account
-- Recommend to use [VScode](https://code.visualstudio.com/) for this lab.
+- Region in US East (N. Virginia)
+- Recommend to use [VScode](https://code.visualstudio.com/) for this lab, because it can edit project and use command line at the same time.
 
 
 ## Create an Amazon Lex Chatbot
-We use Amazon Lex template provided in this tutorial.
+We use Amazon Lex "BookTrip" template provided in this tutorial.
 
 - On the __Service__ menu, click __Amazon Lex__, choose __Create__.
 
@@ -35,11 +35,14 @@ We use Amazon Lex template provided in this tutorial.
 
 - Choose the bot created before, click __Settings__, choose __Aliases__.
 
-    __Alias name__ : `test`
+    - Setting as following : 
 
-    __Bot version__ : `latest`
+        - __Alias name__ : `test`
 
-- - Click __PLUS__ icon to add a new alias.
+        - __Bot version__ : `latest`
+        > It will give a different alias name for different version for each time.
+
+- Click __PLUS__ icon to add a new alias.
 
 <center>
 <img src="./images/003-Amazon Lex_alias-01.jpg" alt="003-Amazon Lex_alias-01.jpg">
@@ -106,7 +109,7 @@ Using command line to create react app.
 
 - Initialize the cloud resources for our app, type `amplify init` in terminal.
 
-> It will prompt you with a few questions.
+> It will prompt you three to five minutes.
 
 <center>
 <img src="./images/008-Amazon Amplify_init-01.jpg" alt="008-Amazon Amplify_init-01.jpg">
@@ -134,7 +137,6 @@ Using command line to create react app.
 
 - Use `amplify push` to provision the initial cloud resources for our app.
 
-### Add Config in AWS Amplify Project
 
 - Open __sumerian-amplify-app__ project with [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -190,6 +192,7 @@ body {
 ```
 
 ### Add an Authentication Service to the Amplify Project
+Use AWS Amplify CLI to add an authentication service to our project.
 
 - Get into your __sumerian-amplify-app__ folder in terminal.
 
@@ -201,7 +204,7 @@ body {
 
 - Type `amplify push` to update CloudFormation stack.
 
-> NOTES : It will take a few minuites to update the stack.
+> NOTES : It will take three to five minuites to update the stack.
 
 
 - Extend the __amplify / backend__ folder, open the __amplify-meta.jason__.
@@ -235,7 +238,7 @@ body {
 <img src="./images/016-add policy_add-01.jpg" alt="016-add policy_add-01.jpg">
 </center>
 
-- Select __JSON__, and paste the fowlling content.
+- Select __JSON__, and paste the following content.
 
 ```
 {
@@ -375,7 +378,7 @@ body {
 
 > This policy will allow your Sumerian scene to use Amazon Lex and allow your app to load the Amazon Sumerian scene.
 
-- __Attach the same Inline policies to AuthRolename with the same steps as UnauthRolename.__.
+- __Attach the same Inline policy to AuthRolename with the same steps as UnauthRolename__.
 
 - Click __Services__, select __Cognito__. 
 
@@ -396,6 +399,7 @@ body {
 </center>
 
 ### Create an Amazon Sumerian Scene
+Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - On the __Service__ menu, click __Amazon Sumerian__, you will get into the __Amazon Sumerian Dashboard__.
 
@@ -444,7 +448,6 @@ body {
 <img src="./images/024-Sumerian host_import-04.jpg" alt="024-Sumerian host_import-04.jpg">
 </center>
 
-### Adding the Dialogue Component
 
 - Select __Maya__ entities, and click __Add component__, choose __Dialogue__.
 
@@ -459,9 +462,6 @@ body {
 <center>
 <img src="./images/026-Sumerian config_add dialogue-02.jpg" alt="026-Sumerian config_add dialogue-02.jpg">
 </center>
-
-### Creating a Chatbot Behavior Using the State Machine
-
 
 - Select __Maya__ entities, and click __Add component__, choose __State Machine__.
 
@@ -482,6 +482,8 @@ body {
 <center>
 <img src="./images/029-Sumerian config_add state machine-03.jpg" alt="029-Sumerian config_add state machine-03.jpg">
 </center>
+
+> Next, we will add different states in this behavior component.
 
 - Rename __State 1__ : `Start`, and choose __Add Action__.
 
@@ -616,7 +618,7 @@ body {
 <img src="./images/045-JSON file_update-01.jpg" alt="045-JSON file_update-01.jpg">
 </center>
 
-### Run the React App
+> Now we have done all flows, let's test it.
 
 - Type `npm start` to run your app in local.
 

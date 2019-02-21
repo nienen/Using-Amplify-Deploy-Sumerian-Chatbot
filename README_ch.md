@@ -6,25 +6,26 @@
 <img src="./images/001-Architecture diagram-01.png" alt="001-Architecture diagram-01.png">
 </center>
 
-Amazon Lex 是一個能部署在應用程式並使用語音或文字建立交談介面的服務，它提供自動語音辨識 (ASR) 的深度學習功能將語音轉換為文字再利用自然語言理解 (NLU) 來辨識文字的含義，讓使用者能夠體驗到逼真的交談與互動。
+Amazon Lex 是一個能部署在應用程式並使用語音或文字建立交談介面的服務，它提供自動語音辨識 (ASR) 的深度學習功能，將語音轉換為文字，再利用自然語言理解 (NLU) 來辨識文字的含義，讓使用者能夠體驗到逼真的交談與互動。
 
-Amazon Sumerian 讓你無須任何 3D 圖形的專業知識便可以輕鬆快速地打造虛擬實境 (VR)、擴增實境 (AR)、和 3D 應用程式，並可在各種常見的頭戴式裝置與行動裝置上執行。
+Amazon Sumerian 是一個無須任何 3D 圖形的專業知識便可以輕鬆快速地打造虛擬實境 (VR)、擴增實境 (AR)、和 3D 應用程式，並可在各種常見的頭戴式裝置與行動裝置上執行。
 
-AWS Amplify 讓你能輕鬆建立程式專案，並迅速部署 AWS 服務於專案之中，並提供簡單的架構將後端與常見的 iOS、Android、Web、React Native 等前端整合。
+AWS Amplify 是一個能輕鬆建立程式專案，並迅速部署 AWS 服務於專案之中，並提供簡單的架構將後端與常見的前端整合。
+
 
 ## 情境
-透過 AWS Amplify 先創建一個 React 專案，並將 Amazon Lex 的語音機器人匯出，先與 Amazon Sumerian 場景做結合，隨後再完成 React 專案中的程式碼並可建立一個擁有身分驗證功能的語音聊天蘇美人。
+我們將利用 AWS AI 領域的 AWS Lex 語言深度學習功能與 Amazon Sumerian 做結合創造出屬於自己的互動式語音助理，再利用 AWS Amplify 迅速的將此應用程式輸出並部署在頭戴式裝置或行動裝置中。
 
 ## 事前準備
 
-- AWS 帳號
-- 建議使用 [VScode](https://code.visualstudio.com/).
+- 地區在 US East (N. Virginia)
+- 建議使用 [VScode](https://code.visualstudio.com/)，因為它能同時使用終端機與編輯專案。
 
 ## 步驟
 
-## 利用Amazon Lex 打造語音機器人
+## 利用 Amazon Lex 打造語音機器人
 
-我們使用 Amazon Lex 預設的範本作為本次語音機器人的設定。
+首先，我們使用 Amazon Lex 預設的"BookTrip"範本來打造這次語音機器人的主題，主要情境是透過對話，讓 Amazon Sumerian 幫你訂旅館或租車。
 
 - 在 __Service__ 選單中，選擇 __Amazon Lex__ 後，點選 __Create__ 來創建一個語音機器人。
 
@@ -35,12 +36,15 @@ AWS Amplify 讓你能輕鬆建立程式專案，並迅速部署 AWS 服務於專
 </center>
 
 - 點入剛剛創建的語音機器人，開啟 __Settings__ 選項並選擇 __Aliases__。
+    
+    - 設定如下:
 
-    __Alias name__ : `test`
+        - __Alias name__ : `test`
 
-    __Bot version__ : `latest`
+        - __Bot version__ : `latest`
+        > 每次匯出機器人都需要設定 Alias name ，以區分的不同版本。 
 
-- 點選 __PLUS__ 新增一個新的版本號。
+- 點選 __PLUS__ 新增一個新的版本。
 
 <center>
 <img src="./images/003-Amazon Lex_alias-01.jpg" alt="003-Amazon Lex_alias-01.jpg">
@@ -58,13 +62,13 @@ AWS Amplify 讓你能輕鬆建立程式專案，並迅速部署 AWS 服務於專
 
 ## 安裝 AWS Amplify CLI
 
-__打開VScode的終端機__，使用command line來安裝 AWS Amplify CLI。
+__打開 VScode 的終端機__，使用 command line 來安裝 AWS Amplify CLI。
 
-- 請先安裝 [Node.js](https://nodejs.org/en/download/) 與 [npm](https://www.npmjs.com/get-npm)。
+- 請先確認是否安裝 [Node.js](https://nodejs.org/en/download/) 與 [npm](https://www.npmjs.com/get-npm)。
 
 > 安裝後請先重新開機，確保 VScode 可以使用。
 
-- 在 VScode 終端機中輸入 `node -v` 與 `npm -v`，確認 Node.js 與 npm 的版本。 
+- 在 VScode 終端機中輸入 `node -v` 與 `npm -v`，用來確認 Node.js 與 npm 的版本。 
 
     - Node.js : 8.x.x (至少)。
 
@@ -90,20 +94,19 @@ __打開VScode的終端機__，使用command line來安裝 AWS Amplify CLI。
 <img src="./images/007-Amazon Amplify_configure-02.jpg" alt="007-Amazon Amplify_configure-02.jpg">
 </center>
 
-### 利用AWS Amplify 建立一個 React 應用程式
 
-利用 command line to 建立一個 react 應用程式。
 
-- 使用 `npx create-react-app sumerian-amplify-app` 創建一個 React 應用程式。
+- 使用 `npx create-react-app sumerian-amplify-app` 創建一個應用程式專案。
 
 > 專案預設路徑 __C:\Users\USER\sumerian-amplify-app__。
 
-- 使用 `cd sumerian-amplify-app` 在 VScode 終端機中進入專案資料夾。
+- 輸入 `cd sumerian-amplify-app` 在 VScode 終端機中，會進入專案資料夾。
 
 
-- 安裝 __aws-amplify__ 與 __aws-amplify-react__ 這兩個套件，`npm install aws-amplify aws-amplify-react --save`。
+- 輸入 `npm install aws-amplify aws-amplify-react --save` 來安裝 __aws-amplify__ 與 __aws-amplify-react__ 這兩個套件。
 
-### 初始化創建的AWS Amplify 專案
+
+### 初始化 AWS Amplify 專案
 
 - 替你的應用程式在雲端上初始化，輸入 `amplify init` 於 VScode 終端機中。
 
@@ -120,13 +123,13 @@ __打開VScode的終端機__，使用command line來安裝 AWS Amplify CLI。
 <img src="./images/009-Amazon Amplify_init-02.jpg" alt="009-Amazon Amplify_init-02.jpg">
 </center>
 
-- 選擇你的 Amazon Sumerian 場景匯出的區域。
+- 選擇你 Amazon Sumerian 場景匯出的區域。
 
 <center>
 <img src="./images/010-Amazon Amplify_init-03.jpg" alt="010-Amazon Amplify_init-03.jpg">
 </center>
 
-> 初始化需要花費幾分鐘，請稍等。
+> 初始化需要花費三至五分鐘。
 
 
 <center>
@@ -135,9 +138,8 @@ __打開VScode的終端機__，使用command line來安裝 AWS Amplify CLI。
 
 - 利用 `amplify push` 將你的設定同步上雲端。
 
-### 設定 AWS Amplify 專案
 
-- 利用 [Visual Studio Code](https://code.visualstudio.com/) 打開 __sumerian-amplify-app__ 專案。
+- 透過 [Visual Studio Code](https://code.visualstudio.com/) 打開 __sumerian-amplify-app__ 專案。
 
 - 修改 __App.js__ 中的程式碼。
     
@@ -190,22 +192,23 @@ body {
 }
 ```
 
-### 替 AWS Amplify 專案建立身分驗證
+### 替專案建立身分驗證
+使用 AWS Amplify CLI 建立應用程式的身分驗證功能。
 
-- 再次利用 VScode 終端機進入 __sumerian-amplify-app__ 資料夾。
+- 在 VScode 終端機中輸入 `cd sumerian-amplify-app` 進入 __sumerian-amplify-app__ 資料夾。
 
-- 在終端機輸入 `amplify add auth` ，選擇 __Yes__ 使用預設的 CloudFormation stack。
+- 輸入 `amplify add auth` ，選擇 __Yes__ 使用預設的 CloudFormation stack。
 
 <center>
 <img src="./images/012-add auth_config-01.jpg" alt="012-add auth_config-01.jpg">
 </center>
 
-- 再次輸入 `amplify push` 在雲端上同步剛剛的設定。
+- 輸入 `amplify push` 在雲端上同步剛剛的設定。
 
-> 同步需要花一點時間，請稍等。
+> 同步需要花三至五分鐘。
 
 
-- 展開 __amplify / backend__ 資料夾，並打開 __amplify-meta.jason__。
+- 開啟 __amplify__ 資料夾後，展開 __backend__ 資料夾，並打開 __amplify-meta.jason__。
 
 <center>
 <img src="./images/013-open file_update-01.jpg" alt="013-open file_update-01.jpg">
@@ -223,10 +226,10 @@ body {
 </center>
 
 
-- 回到 AWS 主控台，選擇 __Services__，點入 __IAM__。
+- 回到 AWS 主控台，選擇 __Services__，選擇 __IAM__。
 
 
-- 選擇左側選單的 __Roles__，貼上剛剛記下的 __UnAuthRoleName__ 並點入。
+- 選擇左側選單的 __Roles__，搜尋剛剛記下的 __UnAuthRoleName__ 並點擊進入。
 
 - 選擇 __Add inline policy__。
 
@@ -375,16 +378,16 @@ body {
 
     > 這個 IAM policy 能夠授權你的 Amazon Sumerian 場景能夠使用 Amazon Lex 的資源並讓你的應用程式能夠讀取 Amazon Sumerian 場景。
 
-- 對 __UnauthRolename__ 進行與 __AuthRolename__ 相同的步驟。
+- 對 __UnauthRolename__ 進行與 __AuthRolename__ 相同的新增步驟。
     > 新增 IAM policy。
 
 - 回到 AWS 主控台選擇 __Services__ 並點入 __Cognito__。 
 
 - 選擇 __Manage Identity Pools__。
 
-- 貼上剛剛複製的 __IdentityPoolName__ 然後在右上角選擇 __Edit identity pool__ 。
+- 貼上剛剛複製的 __IdentityPoolName__，然後在右上角選擇 __Edit identity pool__ 。
 
-- 展開 __Unauthenticated identities__ 並勾選 __Enable access to unauthenticated identities__ 。
+- 展開 __Unauthenticated identities__，勾選 __Enable access to unauthenticated identities__ 。
 
 <center>
 <img src="./images/017-identity pool_check-01.jpg" alt="017-identity pool_check-01.jpg">
@@ -397,11 +400,12 @@ body {
 </center>
 
 ### 建立一個 Amazon Sumerian 場景
+利用對話元件建立一個擁有語音對話功能的 Amazon Sumerian 場景。
 
 - 開啟 AWS 主控台選擇 __Service__，點入 __Amazon Sumerian__，並會跳轉到 __Amazon Sumerian Dashboard__。
 
 
-- 選擇 __Create new scene__，並取個 __Scene name__。
+- 選擇 __Create new scene__，並替場景取一個 __Scene name__。
 
 - 在左上角的 Entities 列表中點選 __yourscenename__，然後展開右邊列表的 __AWS Configuration__。
 
@@ -438,13 +442,12 @@ body {
 <img src="./images/023-Sumerian host_import-03.jpg" alt="023-Sumerian host_import-03.jpg">
 </center>
 
-> 注意 : 你可能需要利用滾輪放大才看的到。
+> 注意 : 你可能需要放大才看的到。
 
 <center>
 <img src="./images/024-Sumerian host_import-04.jpg" alt="024-Sumerian host_import-04.jpg">
 </center>
 
-### 替 Amazon Sumerian 場景新增對話元件
 
 - 在左上角 Entities 清單選擇 __Maya__，並於右方列表點選 __Add component__ 並選擇 __Dialogue__。
 
@@ -454,14 +457,12 @@ body {
 </center>
 
 - 輸入 __Name__ 與 __Alias__。
-    > 請輸入先前創建的 Amazon Lex 語音機器人的名字與版本號。
+    > 請輸入先前創建的 Amazon Lex 語音機器人的名字與版本。
 
 
 <center>
 <img src="./images/026-Sumerian config_add dialogue-02.jpg" alt="026-Sumerian config_add dialogue-02.jpg">
 </center>
-
-### 替 Amazon Sumerian 場景建立一個動作元件
 
 
 - 在左上角 Entities 清單選擇 __Maya__，並於右方點選 __Add component__ 選擇 __State Machine__。
@@ -483,6 +484,8 @@ body {
 <center>
 <img src="./images/029-Sumerian config_add state machine-03.jpg" alt="029-Sumerian config_add state machine-03.jpg">
 </center>
+
+> 接著我們要替這個動作元件新增不同的狀態(state)。
 
 - 替 __State 1__ 重新命名為 : `Start`，並選擇 __Add Action__。
 
@@ -586,15 +589,16 @@ body {
 </center>
 
 ### 匯出不公開的 Amazon Sumerian 場景
+有別於公開匯出的形式，不公開匯出可利用不同的裝置開啟 Amazon Sumerian 場景。
 
 - 點選右上角 __Publish__，選擇 __Host privately__ 然後 __Publish__。
 
     > 如果已經是匯出的狀態，請先 __Unpublish__ 然後再次 __Publish__。
 
-
 <center>
 <img src="./images/042-Sumerian scene_publish-01.jpg" alt="042-Sumerian scene_publish-01.jpg">
 </center>
+
 
 <center>
 <img src="./images/043-Sumerian scene_publish-02.jpg" alt="043-Sumerian scene_publish-02.jpg">
@@ -602,7 +606,7 @@ body {
 
 - 不公開匯出會是一個 JSON 檔，請 __Download JSON configuration__。
 
-- 將下載的 JSON 檔拖曳進 __src__ 資料夾中並改名 `sumerian-exports.js`。
+- 將下載的 JSON 檔複製到 __src__ 資料夾中並改名 `sumerian-exports.js`。
 
 
 <center>
@@ -615,7 +619,7 @@ body {
 <img src="./images/045-JSON file_update-01.jpg" alt="045-JSON file_update-01.jpg">
 </center>
 
-### 測試 React 應用程式
+> 現在我們已經將所有的步驟完成，可先透過 command line 於地端測試專案。
 
 - 輸入 `npm start` 在本地執行 React 應用程式。
 

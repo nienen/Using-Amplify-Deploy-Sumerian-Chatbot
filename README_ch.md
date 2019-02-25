@@ -73,7 +73,6 @@ Amazon Sumerian 是一個無須任何 3D 圖形的專業知識便可以輕鬆快
 
     - npm : 5.x.x  (至少)。
 
-
 <center>
 <img src="./images/005-Amazon Amplify_install-01.jpg" alt="005-Amazon Amplify_install-01.jpg">
 </center>
@@ -140,7 +139,7 @@ Amazon Sumerian 是一個無須任何 3D 圖形的專業知識便可以輕鬆快
 
     > 完成初始設定後便開始應用程式的設計。
 
-- 使用 [Visual Studio Code](https://code.visualstudio.com/) 打開先前創好的 __sumerian-amplify-app__ 專案。
+- 使用 [VScode](https://code.visualstudio.com/) 打開先前創好的 __sumerian-amplify-app__ 專案。
 
 - 修改 __App.js__ 中的程式碼。
     
@@ -403,7 +402,7 @@ body {
 </center>
 
 ### 建立一個 Amazon Sumerian 場景
-我們將新增一個場景，並加入用來說話的主持人，再透過設定 "對話元件" 與先前建立好的 Amazon Lex 語音機器人做連結，賦予主持人擁有語音對話的功能，最後再匯出一個不公開的 Amazon Sumerian 場景以便我們應用程式使用。
+我們將新增一個場景，並加入用來說話的主持人(Maya)，再透過設定 __Dialogue Component__ 與先前建立好的 Amazon Lex 語音機器人做連結，賦予主持人(Maya)擁有語音對話的功能，最後再匯出一個不公開的 Amazon Sumerian 場景以便我們應用程式使用。
 
 - 開啟 AWS 主控台選擇 __Service__，選擇 __Amazon Sumerian__ ，將會跳轉到 __Amazon Sumerian Dashboard__ 的網頁。
 
@@ -416,7 +415,7 @@ body {
 
 
 <center>
-<img src="./images/019-Sumerian_update-01.jpg" alt="019-Sumerian_update-01.jpg">
+<img src="./images/019-Sumerian_update-01.jpg" alt="019-Sumerian_update-01.jpg" width="40%>
 </center>
 
 - 展開 __AWS Configuration__ 列表，貼上剛剛複製的 __Cognito Identity Pool ID__。

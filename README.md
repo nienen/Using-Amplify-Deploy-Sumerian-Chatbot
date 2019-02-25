@@ -1,4 +1,4 @@
-## Create an Amazon Sumerian Chatbox with Amazon Lex and AWS Amplify
+## Create a Virtual assistant app with Amazon Lex and AWS Amplify
 
 ## Overview
 
@@ -22,7 +22,7 @@ In this lab, you will learn how to set up an AWS Amplify React app to hold a Sum
 - Recommend to use [VScode](https://code.visualstudio.com/) for this lab, because it can edit project and use command line at the same time.
 
 
-## Create an Amazon Lex Chatbot
+### Create an Amazon Lex Chatbot
 We use Amazon Lex "BookTrip" template provided in this tutorial.
 
 - On the __Service__ menu, click __Amazon Lex__, choose __Create__.
@@ -58,7 +58,7 @@ We use Amazon Lex "BookTrip" template provided in this tutorial.
 
 > Waiting for publish, and you can close the page.
 
-## Install AWS Amplify CLI
+### Install AWS Amplify CLI
 
 __Open Visual Studio Code's terminal__, Using command line to install AWS Amplify CLI.
 
@@ -422,7 +422,6 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - Click __Import Assets__, choose __Maya__ and select __Add__ to add a host.
 
-
 <center>
 <img src="./images/021-Sumerian host_import-01.jpg" alt="021-Sumerian host_import-01.jpg">
 </center>
@@ -587,7 +586,6 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 <img src="./images/041-state action_final-10.jpg" alt="041-state action_final-10.jpg">
 </center>
 
-### Publish Amazon Sumerian Scene Privately
 
 - Select __Publish__ on upper right corner, choose __Host privately__ and __Publish__.
 
@@ -679,3 +677,7 @@ We now have learned how to:
 
 ## Reference
 - [Using the Dialogue Component and Amazon Lex to Build a Chatbot](https://docs.sumerian.amazonaws.com/tutorials/create/beginner/dialogue-component/)
+
+- [AWS Amplify](https://aws-amplify.github.io/docs/)
+
+- [Amazon Lex Programming Model](https://docs.aws.amazon.com/zh_tw/lex/latest/dg/programming-model.html)

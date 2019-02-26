@@ -18,7 +18,7 @@ Amazon Sumerian 是一個無須任何 3D 圖形的專業知識便可以輕鬆快
 ## 事前準備
 
 - 地區請選擇 US East (N. Virginia)
-- 建議使用 [VScode](https://code.visualstudio.com/)，因為它能同時操作終端機與編輯專案。(當然你也能使用其他的)
+- 建議使用 [VScode](https://code.visualstudio.com/)，因為它能同時操作終端機與編輯專案。(或選用其他方式)
 
 ## 步驟
 
@@ -43,7 +43,7 @@ Amazon Sumerian 是一個無須任何 3D 圖形的專業知識便可以輕鬆快
         - __Bot version__ : `latest`
         > 每次匯出機器人都需要設定 Alias name ，以區分的不同版本。 
 
-- 點選 __PLUS__ 新增一個新的版本。
+- 點選 __PLUS__ 來增加一個新的版本。
 
 <center>
 <img src="./images/003-Amazon Lex_alias-01.jpg" alt="003-Amazon Lex_alias-01.jpg">
@@ -116,7 +116,7 @@ Amazon Sumerian 是一個無須任何 3D 圖形的專業知識便可以輕鬆快
 </center>
 
 
-- 選擇 __NO__ 當問到 __"Do you want to use an AWS profile"__ 時，接著輸入你 AWS 帳號的 __accessKeyId__ 與 __secretAccessKey__。
+- 當問到 __Do you want to use an AWS profile__ 時，選擇 __NO__ ，接著輸入你 AWS 帳號的 __accessKeyId__ 與 __secretAccessKey__。
 
 <center>
 <img src="./images/009-Amazon Amplify_init-02.jpg" alt="009-Amazon Amplify_init-02.jpg">
@@ -380,14 +380,16 @@ body {
 
     > 這個 IAM policy 能夠授權你的 Amazon Sumerian 場景能夠使用 Amazon Lex 的資源，並讓你的應用程式能夠讀取 Amazon Sumerian 場景。
 
-- 對 __UnauthRolename__ 進行與 __AuthRolename__ 相同的新增步驟。
+- 對 __AuthRolename__ 進行與 __UnauthRolename__ 相同的新增步驟。
     > 新增 IAM policy。
 
 - 回到 AWS 主控台選擇 __Services__ ，選擇 __Cognito__。 
 
 - 選擇 __Manage Identity Pools__。
 
-- 貼上剛剛複製的 __IdentityPoolName__，然後在右上角選擇 __Edit identity pool__ 。
+- 找尋剛剛複製的 __IdentityPoolName__ 並點入，然後在右上角選擇 __Edit identity pool__ 。
+
+    > Cognito 這邊的主控台沒有搜尋功能，只能用找的。
 
 - 展開 __Unauthenticated identities__，勾選 __Enable access to unauthenticated identities__ 。
 
@@ -395,7 +397,7 @@ body {
 <img src="./images/017-identity pool_check-01.jpg" alt="017-identity pool_check-01.jpg">
 </center>
 
-- 複製 __Identity pool ID__，待會兒會用到。
+- 複製 __Identity pool ID__，接下來的步驟會用到。
 
 <center>
 <img src="./images/018-identity pool_copy-01.jpg" alt="018-identity pool_copy-01.jpg">
@@ -415,8 +417,9 @@ body {
 
 
 <center>
-<img src="./images/019-Sumerian_update-01.jpg" alt="019-Sumerian_update-01.jpg" width="40%>
+<img src="./images/019-Sumerian_update-01.jpg" alt="019-Sumerian_update-01.jpg" width="40%">
 </center>
+
 
 - 展開 __AWS Configuration__ 列表，貼上剛剛複製的 __Cognito Identity Pool ID__。
 
@@ -461,8 +464,12 @@ body {
 <img src="./images/025-Sumerian config_add dialogue-01.jpg" alt="025-Sumerian config_add dialogue-01.jpg">
 </center>
 
-- 輸入先前創建的 Amazon Lex 語音機器人的 __Name__ 與 __Alias__。
-    > 此步驟是賦予 Maya 擁有 Amazon Lex 語音機器人的功能。
+- 輸入先前創建的 Amazon Lex 語音機器人時的 __Bot Name__ 與 __Alias name__。
+
+
+> Bot name 是自己取的 Amazon lex Bot 的名字，Alias name 則是 __test__。
+    
+> 此步驟是賦予 Maya 擁有 Amazon Lex 語音機器人的功能。
 
 
 <center>
@@ -665,15 +672,17 @@ body {
     - index doc for the website : `index.html`
 
     - error doc for the website : `index.html`
-
+    
 
 <center>
 <img src="./images/050-add hosting_set up-02.jpg" alt="050-add hosting_set up-02.jpg">
 </center>
 
+> 設定完成後，AWS Amplify 可會自動建立一個 S3 Bucket。
+
 - 輸入 `amplify publish` 指令，匯出應用程式。
 
-    > 匯出成一個 URL，可利用任何頭戴式裝置或行動裝置開啟。
+> 匯出成一個 URL，可利用任何頭戴式裝置或行動裝置開啟。
 
 <center>
 <img src="./images/051-add hosting_publish-01.jpg" alt="051-add hosting_publish-01.jpg">

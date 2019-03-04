@@ -3,7 +3,7 @@
 ## 前言
 
 <center>
-<img src="./images/001-Architecture diagram-01.png" alt="001-Architecture diagram-01.png" >
+<img src="./images/001-Architecture diagram-01.png" alt="001-Architecture diagram-01.png" width="100% >
 </center>
 
 AWS Amplify 於 2018年底新增了一項功能，可支援 Amazon Sumerian 的 3D 場景整合於 AWS Amplify 的專案之中，現在可透過 AWS Amplify 迅速的將 Amazon Sumerian 場景部署於你的應用程式當中。 

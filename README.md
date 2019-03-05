@@ -433,11 +433,7 @@ We will create a new scene and add the host to talk (Maya), and then connect to 
 
 
 ## Conlusion
-We now have learned how to:
-- Install AWS Amplify CLI.
-- Create a React app.
-- Publish Sumerian scene privately.
-- Use AWS Amplify to depoly an app.
+Now you have learned how to install and set up the AWS Amplify CLI and create applications with AWS Amplify. Also learn how to create an Amazon Sumerian scene, add the host to connect with Amazon Lex chatbot, and publish the Amazon Sumerian scenes privately, integrate them into your application or other devices, and create your own virtual assistant.
 
 
 ## Reference

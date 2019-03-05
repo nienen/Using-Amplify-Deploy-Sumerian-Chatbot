@@ -7,6 +7,8 @@
 <img src="./images/001-Architecture diagram-01.png" alt="001-Architecture diagram-01.png" width="100%">
 </center>
 
+AWS Amplify recently added support for augmented reality (AR) and virtual reality (VR) content within your applications. The XR category has built-in support for Amazon Sumerian.
+
 Amazon Lex is a service for building conversational interfaces into any application using voice and text. As a fully managed service, you don’t need to worry about managing infrastructure. 
 
 Amazon Sumerian lets you create and run virtual reality (VR), augmented reality (AR), and 3D applications quickly and easily without requiring any specialized programming or 3D graphics expertise.
@@ -14,7 +16,7 @@ Amazon Sumerian lets you create and run virtual reality (VR), augmented reality 
 AWS Amplify makes it easy to create, configure, and implement scalable mobile and web apps powered by AWS.
 
 ## Scenario
-In this lab, you will learn how to set up an AWS Amplify React app to hold a Sumerian Chatbot scene for both authenticated and unauthenticated users to access.
+We can design Amazon Lex chatbot according to different situations and cooperate with AWS Amplify to automatically depoly the application. We doesn't worry about the backend program and hardware load problem at all, just focus on the design of the main code. The Amazon Sumerian scene can be quickly deployed in various installations, suitable for interactive receptionists of various large-scale exhibition events or various simulation teaching materials.
 
 ## Preparation
 
@@ -23,7 +25,7 @@ In this lab, you will learn how to set up an AWS Amplify React app to hold a Sum
 
 
 ### Create an Amazon Lex Chatbot
-We use Amazon Lex "BookTrip" template provided in this tutorial.
+First, we used Amazon Lex default "BookTrip" template to simplify the process to create the theme of this chatbot. The robot will detect the intent to judge the user's intentions, and reply to the relevant dialogue or make corresponding actions. For example, the robot will continuously ask the user around the theme of "BookTrip" and finally make a reservation. Or the action of renting a car.
 
 - On the __Service__ menu, click __Amazon Lex__, choose __Create__.
 
@@ -92,7 +94,7 @@ body {
 ```
 
 ### Add an Authentication Service to the Amplify Project
-Use AWS Amplify CLI to add an authentication service to our project.
+We use AWS Amplify to build the identity verification capabilities of the application, which is just one of the features in the AWS Amplify tools, if you need to add more features to the application, please go to [AWS Amplify](https://aws-amplify.github.io/docs/).
 
 - Get into your __sumerian-amplify-app__ folder in terminal.
 
@@ -101,6 +103,8 @@ Use AWS Amplify CLI to add an authentication service to our project.
 <center>
 <img src="./images/005-add auth_config-01.jpg" alt="005-add auth_config-01.jpg">
 </center>
+
+> It will add a identity poolc in AWS Cognito automatically. 
 
 - Type `amplify push` to update CloudFormation stack.
 
@@ -145,11 +149,15 @@ Use AWS Amplify CLI to add an authentication service to our project.
 
 - __Attach the same Inline policy to AuthRolename with the same steps as UnauthRolename__.
 
+    > Add a role
+
 - Click __Services__, select __Cognito__. 
 
 - Select __Manage Identity Pools__.
 
 - Search for your __IdentityPoolName__ and click __Edit identity pool__ on  the upper right corner.
+
+    > AWS Cognito console doesn't have the search bar, please look for the identity pool name by yourself.
 
 - Extend the __Unauthenticated identities__, check the __Enable access to unauthenticated identities__ option.
 
@@ -164,7 +172,7 @@ Use AWS Amplify CLI to add an authentication service to our project.
 </center>
 
 ### Create an Amazon Sumerian Scene
-Establish a Amazon Sumerian scene with dialogue component and state machine.
+We will create a new scene and add the host to talk (Maya), and then connect to the previously established Amazon Lex chatbot by setting __Dialogue Component__ to give the host (Maya) the function of voice conversation. Finally, Then publish an private Amazon Sumerian scene for our application to use.
 
 - On the __Service__ menu, click __Amazon Sumerian__, you will get into the __Amazon Sumerian Dashboard__.
 
@@ -173,6 +181,7 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - Click the Entities of __yourscenename__ on the upper left corner, and then extend the __AWS Configuration__ on the right side.
 
+    > You will see the config list after click your "yourscenename"
 
 <center>
 <img src="./images/012-Sumerian_update-01.jpg" alt="012-Sumerian_update-01.jpg" width="45%">
@@ -180,6 +189,7 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - Extend the __AWS Configuration__, update the __Cognito Identity Pool ID__ you copy before.
 
+    > This step is to enable this scene to use the permissions just set in AWS Cognito
 
 <center>
 <img src="./images/013-Sumerian_ID-01.jpg" alt="013-Sumerian_ID-01.jpg" >
@@ -214,6 +224,10 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 </center>
 
 - Insert the values for __Name__ and __Alias__, these inputs reference the Amazon Lex chatbot what you created.
+
+    > Bot name is created by youself, Alias name is test
+
+    > This step gives Maya the ability of Amazon Lex chatbot
 
 
 <center>
@@ -288,8 +302,9 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 <img src="./images/026-state action_add-03.jpg" alt="026-state action_add-03.jpg">
 </center>
 
-- Change the key : __T__.
+- Change the key __what you want__.
 
+    > I use  T in this lab
 
 <center>
 <img src="./images/027-state action_add-04.jpg" alt="027-state action_add-04.jpg">
@@ -297,6 +312,7 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - Click state __Start Recording__, add  __Start Microphone Recording__ and __Key Up__ action.
 
+    > It must the same with __Key down__
 
 <center>
 <img src="./images/028-state action_add-05.jpg" alt="028-state action_add-05.jpg">
@@ -390,6 +406,8 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 <img src="./images/039-add hosting_set up-02.jpg" alt="039-add hosting_set up-02.jpg">
 </center>
 
+> Once set up, AWS Amplify will automatically create an S3 Bucket
+
 - Type `amplify publish` to publish your Amplify project.
 
 <center>
@@ -409,11 +427,10 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - __Create account__ and __Login__, you will see the Sumerian scene.
 
-- Press __T__ to talk with her.
+- Press the __key__ you set up before to talk with her.
 
 > You can say "Book a hotel" or "Book a car" to start the dialogue.
 
-> You can press "Ctrl+c" in terminal to end this work.
 
 ## Conlusion
 We now have learned how to:

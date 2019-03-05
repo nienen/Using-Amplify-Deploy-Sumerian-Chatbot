@@ -3,10 +3,11 @@
 ## 前言
 
 <center>
-<img src="./images/001-Architecture diagram-01.png" alt="001-Architecture diagram-01.png" width="100% >
+<img src="./images/001-Architecture diagram-01.png" alt="001-Architecture diagram-01.png" width="100%" >
 </center>
 
 AWS Amplify 於 2018年底新增了一項功能，可支援 Amazon Sumerian 的 3D 場景整合於 AWS Amplify 的專案之中，現在可透過 AWS Amplify 迅速的將 Amazon Sumerian 場景部署於你的應用程式當中。 
+
 
 AWS Amplify 是一個能輕鬆建立程式專案，並迅速部署 AWS 服務於專案之中，並提供簡單的架構將後端與常見的前端整合，作為一個全託管的服務，完全不需任何設定便可以讓應用程式後端可以隨需擴展。
 
@@ -207,15 +208,14 @@ body {
 
 - 需要將 __Maya__ 拖曳進場景之中才可以看到 __Maya__。
 
-
 <center>
-<img src="./images/015-Sumerian host_import-03.jpg" alt="015-Sumerian host_import-03.jpg">
+<img src="./images/015-Sumerian host_import-02.jpg" alt="015-Sumerian host_import-02.jpg">
 </center>
 
 > 注意 : 你可能需要放大才看的到。
 
 <center>
-<img src="./images/016-Sumerian host_import-04.jpg" alt="016-Sumerian host_import-04.jpg">
+<img src="./images/016-Sumerian host_import-03.jpg" alt="016-Sumerian host_import-03.jpg">
 </center>
 
 

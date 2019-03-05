@@ -347,12 +347,12 @@ Establish a Amazon Sumerian scene with dialogue component and state machine.
 
 - Select __Publish__ on upper right corner, choose __Host privately__ and __Publish__.
 
-> If you are already published, click unpublish.
-
 
 <center>
 <img src="./images/034-Sumerian scene_publish-01.jpg" alt="034-Sumerian scene_publish-01.jpg">
 </center>
+
+> If you are already published, click unpublish.
 
 <center>
 <img src="./images/035-Sumerian scene_publish-02.jpg" alt="035-Sumerian scene_publish-02.jpg">

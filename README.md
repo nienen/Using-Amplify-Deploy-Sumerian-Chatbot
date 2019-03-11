@@ -431,6 +431,13 @@ We will create a new scene and add the host to talk (Maya), and then connect to 
 
 > You can say "Book a hotel" or "Book a car" to start the dialogue.
 
+<center>
+<img src="./images/043-lex_flow-01.png" alt="043-lex_flow-01.png">
+</center>
+
+<center>
+<img src="./images/044-lex_flow-02.png" alt="044-lex_flow-02.png">
+</center>
 
 ## Conlusion
 Now you have learned how to install and set up the AWS Amplify CLI and create applications with AWS Amplify. Also learn how to create an Amazon Sumerian scene, add the host to connect with Amazon Lex chatbot, and publish the Amazon Sumerian scenes privately, integrate them into your application or other devices, and create your own virtual assistant.

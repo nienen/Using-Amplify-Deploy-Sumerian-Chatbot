@@ -438,6 +438,13 @@ body {
 
     > 說出 "Book a hotel" 或 "Book a car" 這兩個關鍵字可以觸發回應。
 
+<center>
+<img src="./images/043-lex_flow-01.png" alt="043-lex_flow-01.png">
+</center>
+
+<center>
+<img src="./images/044-lex_flow-02.png" alt="044-lex_flow-02.png">
+</center>
 
  
 
